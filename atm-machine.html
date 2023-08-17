@@ -13,15 +13,20 @@
         //The ATM Implementation.
         alert('Welcome to SURE Bank!');
         let isCardInserted = true
+        let accountBalance = 5000
         confirm('Please insert your card.');
+        //Check for each condition
         while (isCardInserted) {
-            let pin = Number(prompt('Please insert your 4-digit pin.'));
-            while (String(pin).length !== 4) {
+            let pin = prompt('Please insert your 4-digit pin.');
+            //When you input the wrong pin
+            while (pin.length !== 4) {
                 pin = prompt('Your pin must be exactly 4-digits')
             }
             let atmOperation = prompt(`What type of action would you like to perform (Select a number)?
                 1. Withdrawal
-                2. Buy airtime`);
+                2. Buy airtime
+                3. Check account balance`);
+            //Withdrawal
             if (atmOperation === '1') {
                 let amount = prompt(`Please select the amount you would like to withdraw
                     
@@ -30,8 +35,14 @@
                 if (amount === 'others') {
                     amount = prompt('Please input your amount')
                 }
-                alert('Please wait ...');
-                alert(`${amount} withdrawal successful! Please take your cash.`)
+                //Check for account bal sufficiency
+                if(accountBalance > +amount){
+                    alert('Please wait ...');
+                    alert(`${amount} withdrawal successful! Please take your cash.`);
+                    accountBalance -= amount;
+                }else{
+                    alert(`Insufficient funds`)
+                }
 
                 isCardInserted = prompt(`Would you like to perform any other operation?
                     1. yes
@@ -43,15 +54,22 @@
                         Thank you!!!`)
                     isCardInserted = false;
                 }
+            //Buy Airtime
             } else if(atmOperation === '2') {
                 let phoneNumber = prompt('Please insert the 11-digits phone number')
+                //When you input lower digits
                 while (phoneNumber.length !== 11) {
                     phoneNumber = prompt('Please insert the 11-digits phone number');
-                }
+                };
 
                 let airtimeAmount = Number(prompt('Please enter the airtime amount'));
                 if (airtimeAmount === NaN) airtimeAmount = Number(prompt('Please enter the airtime amount'));
-                alert(`${airtimeAmount} airtime purchase was successful!!!`);
+                if(accountBalance > airtimeAmount){
+                    alert(`${airtimeAmount} airtime purchase was successful!!!`);
+                    accountBalance -= airtimeAmount;
+                }else{
+                    alert(`Insufficient funds`)
+                }
 
                 isCardInserted = prompt(`Would you like to perform any other operation?
                     1. yes
@@ -63,26 +81,33 @@
                         Thank you!!!`)
                     isCardInserted = false;
                 };
+            //Check account balance
+            }else if(atmOperation === '3'){
+                let confirmation = prompt(`Would you like to continue?
+                1. yes
+                2. no`);
+                if(confirmation === '1' || confirmation === 'yes'){
+                    alert('Please wait ...');
+                    alert(`Your account balance is N${accountBalance}`)
+                }else{
+                    isCardInserted = prompt(`Would you like to perform any other operation?
+                    1. yes
+                    2. no`);
+                if (isCardInserted === '1' || isCardInserted === 'yes') {
+                    isCardInserted = true;
+                } else {
+                    alert(`Take your card.
+                        Thank you!!!`)
+                    isCardInserted = false;
+                };
+                }
+            //If not any of the options above
             }else{
                 alert('You have not selected any option')
                 isCardInserted = true
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //The USSD Implementation.
     </script>
 </body>
 
