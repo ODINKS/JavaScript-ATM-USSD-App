@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank App</title>
+</head>
+
+<body>
+    <h1>This code demonstrates the banking system</h1>
+    <script>
+        //The ATM Implementation.
+        alert('Welcome to SURE Bank!');
+        let isCardInserted = true
+        confirm('Please insert your card.');
+        while (isCardInserted) {
+            let pin = Number(prompt('Please insert your 4-digit pin.'));
+            while (String(pin).length !== 4) {
+                pin = prompt('Your pin must be exactly 4-digits')
+            }
+            let atmOperation = prompt(`What type of action would you like to perform (Select a number)?
+                1. Withdrawal
+                2. Buy airtime`);
+            if (atmOperation === '1') {
+                let amount = prompt(`Please select the amount you would like to withdraw
+                    
+                    1000    2000    5000
+                    10000   20000   others`);
+                if (amount === 'others') {
+                    amount = prompt('Please input your amount')
+                }
+                alert('Please wait ...');
+                alert(`${amount} withdrawal successful! Please take your cash.`)
+
+                isCardInserted = prompt(`Would you like to perform any other operation?
+                    1. yes
+                    2. No`);
+                if (isCardInserted === '1' || isCardInserted === 'yes') {
+                    isCardInserted = true;
+                } else {
+                    alert(`Take your card.
+                        Thank you!!!`)
+                    isCardInserted = false;
+                }
+            } else if(atmOperation === '2') {
+                let phoneNumber = prompt('Please insert the 11-digits phone number')
+                while (phoneNumber.length !== 11) {
+                    phoneNumber = prompt('Please insert the 11-digits phone number');
+                }
+
+                let airtimeAmount = Number(prompt('Please enter the airtime amount'));
+                if (airtimeAmount === NaN) airtimeAmount = Number(prompt('Please enter the airtime amount'));
+                alert(`${airtimeAmount} airtime purchase was successful!!!`);
+
+                isCardInserted = prompt(`Would you like to perform any other operation?
+                    1. yes
+                    2. no`);
+                if (isCardInserted === '1' || isCardInserted === 'yes') {
+                    isCardInserted = true;
+                } else {
+                    alert(`Take your card.
+                        Thank you!!!`)
+                    isCardInserted = false;
+                };
+            }else{
+                alert('You have not selected any option')
+                isCardInserted = true
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //The USSD Implementation.
+    </script>
+</body>
+
+</html>

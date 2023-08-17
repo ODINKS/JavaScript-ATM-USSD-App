@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USSD Banking</title>
+</head>
+
+<body>
+    <h1>This demonstrates USSD.</h1>
+    <script>
+        alert('Welcome to SURE Bank USSD Banking!!!');
+        let proceed = true
+        while (proceed) {
+            let options = prompt(`SURE BANK
+            Please select your options (1, 2 or 3):
+            1. Transfer
+            2. Recharge
+            3. Data`);
+            if (options === '1') {
+                let accountNumber = prompt(`Please insert your 11-digit account number`);
+                while (accountNumber.length !== 11) {
+                    accountNumber = prompt(`Please insert your 11-digit account number`)
+                };
+                let amount = prompt(`Enter amount`);
+                let pin = prompt(`To transfer ${amount} to ${accountNumber}, enter your 4-digit pin`);
+                while (pin.length !== 4) {
+                    pin = prompt(`Please, your pin must be 4 digits`);
+                };
+                alert(`Transfer was successful!!`);
+                let confirmation = prompt(`Would you like to perform another operation?
+                1. yes
+                2. no`);
+                if (confirmation === '1' || confirmation === 'yes') {
+                    proceed = true;
+                } else {
+                    proceed = false;
+                };
+
+            } else if (options === '2') {
+                accountNumber = prompt(`Please insert your 11-digit account number`)
+                while (accountNumber.length !== 11 || Number(accountNumber) === NaN) {
+                    accountNumber = prompt(`Please insert your 11-digit account number`)
+                };
+                let amount = prompt(`Enter amount`);
+
+                let phoneNumber = prompt(`Enter 11 digits phone number`);
+                while (phoneNumber.length !== 11 || Number(phoneNumber) === NaN) {
+                    phoneNumber = prompt(`Enter 11-digit phone number`);
+                };
+                let pin = prompt(`To purchase ${amount} airtime for ${phoneNumber}, enter your 4-digit pin`);
+
+                while (pin.length !== 4 || Number(pin) === NaN) {
+                    pin = prompt(`Please, your pin must be 4 digits`);
+                };
+
+                alert(`Airtime purchase of N${amount} was successful!!`);
+                let confirmation = prompt(`Would you like to perform another operation?
+                1. yes
+                2. no`);
+                if (confirmation === '1' || confirmation === 'yes') {
+                    proceed = true;
+                } else {
+                    proceed = false;
+                };
+            } else if (options === '3') {
+                accountNumber = prompt(`Please insert your 11-digit account number`)
+                while (accountNumber.length !== 11 || Number(accountNumber) === NaN) {
+                    accountNumber = prompt(`Please insert your 11-digit account number`)
+                };
+                let serviceProvider = prompt(`Select service provider
+                1. MTN_Data
+                2. Airtel_Data
+                3. GLO_Data
+                4. 9Mobile_Data`);
+                // while (serviceProvider.toString() === '1' || serviceProvider !== '2' || serviceProvider !== '3' || serviceProvider !== '4') {
+                //     serviceProvider = prompt(`Select service provider
+                // 1. MTN_Data
+                // 2. Airtel_Data
+                // 3. GLO_Data
+                // 4. 9Mobile_Data`);
+                // }
+                let dataPlan = prompt(`Please, select your data plan
+                1. Daily Plan   
+                2. Weekly Plan
+                3. Monthly plan`);
+                // while (serviceProvider !== '1' || serviceProvider !== '2' || serviceProvider !== '3') {
+                //     serviceProvider = prompt(`Select your dataplan
+                // 1. Daily Plan   
+                // 2. Weekly Plan
+                // 3. Monthly plan`);
+
+                let amount = prompt(`Enter amount`);
+
+                let phoneNumber = prompt(`Enter 11 digits phone number`);
+                while (phoneNumber.length !== 11 || Number(phoneNumber) === NaN) {
+                    phoneNumber = prompt(`Enter 11-digit phone number`);
+                };
+                let pin = prompt(`To purchase ${amount} airtime for ${phoneNumber}, enter your 4-digit pin`);
+
+                while (pin.length !== 4 || Number(pin) === NaN) {
+                    pin = prompt(`Please, your pin must be 4 digits`);
+                };
+
+                alert(`Airtime purchase of N${amount} was successful!!`);
+                let confirmation = prompt(`Would you like to perform another operation?
+                1. yes
+                2. no`);
+                if (confirmation === '1' || confirmation === 'yes') {
+                    proceed = true;
+                } else {
+                    proceed = false;
+                };
+            } else {
+                proceed = prompt(`You have not selected a valid option
+                Would you like to continue?
+                1. yes
+                2. no`);
+                if(proceed === '1'){
+                    proceed = true
+                }else{
+                    proceed = false
+                }
+                
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
